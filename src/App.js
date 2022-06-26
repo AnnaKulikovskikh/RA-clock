@@ -4,7 +4,8 @@ import './App.css'
 import Clock from "./components/Clock"
 
 function App() {
-  const [form, setForm] = useState([])
+  //const [clock, setClock] = useState([{id: nanoid(), name: "Moskow", zone: 3}])
+  const [clock, setClock] = useState([])
 
   const addClock = event => {
     
@@ -15,15 +16,27 @@ function App() {
       name: event.target.name.value.trim(), 
       zone: event.target.zone.value.trim()
     }
-    setForm(prevForm => prevForm.push(add))
-    console.log(form)
-    // const clocks = form.map(clock => {
-    //   <Clock
-    //       name={clock.name}
-    //       zone={clock.zone}
-    //   />
-    // })
+    event.target.name.value = ""
+    event.target.zone.value = ""
+    setClock(prevForm => [...prevForm, add])
   }
+
+  function deleteClock(event, clockId) {
+    event.stopPropagation()
+    setClock(prevClock => prevClock.filter(clo => clo.id !== clockId))
+  }
+  
+  const clocks = clock.map(item => {
+    return (
+      <Clock
+        key={item.id}
+        id={item.id}
+        name={item.name}
+        zone={item.zone}
+        deleteClock={deleteClock}
+      />
+    )
+  })
 
   return (
     <div className='app'>
@@ -38,7 +51,9 @@ function App() {
         </label>
         <button type='submit'>Добавить</button>
       </form>
-      <Clock />
+      <div className="clocks">
+        {clocks}
+      </div>
     </div>
   )
 }
