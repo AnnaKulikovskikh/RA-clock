@@ -17,6 +17,8 @@ input {
 .clocks {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
   margin-top: 50px;
   margin-left: 50px;
 }
@@ -48,35 +50,77 @@ input {
   font-size: 1.5rem;
 }
 
-
-
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.analog-clock{
+  width: 150px;
+  height: 150px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  border-radius: 50%;
+  border: 3px solid darkblue;
+  margin-bottom: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.analog-clock:before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color:darkblue;
+  border-radius: 50%;
+  z-index: 999;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.analog-clock .hour,
+.analog-clock .min,
+.analog-clock .sec{
+  position: absolute;
+}
+
+.analog-clock .hour, .hr{
+  width: 159px;
+  height: 159px;
+}
+.analog-clock .min, .mn{
+  width: 160px;
+  height: 160px;
+}
+.analog-clock .sec, .sc{
+  width: 160px;
+  height: 160px;
+}
+
+.hr, .mn, .sc{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hr:before{
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 80px;
+  background-color: darkblue;
+  z-index: 10;
+  border-radius: 6px 6px 0 0;
+}
+.mn:before{
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 90px;
+  background-color: blue;
+  z-index: 11;
+  border-radius: 6px 6px 0 0;
+}
+.sc:before{
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background-color:darkslateblue;
+  z-index: 12;
+  border-radius: 6px 6px 0 0;
 }

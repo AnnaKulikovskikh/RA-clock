@@ -1,3 +1,4 @@
+import TikTak from "./TikTak.js"
 import { Component } from "react";
 
 class Clock extends Component {
@@ -35,6 +36,7 @@ class Clock extends Component {
                     <div className="cross" onClick={(event) => this.props.deleteClock(event, this.props.id)}>x</div>
                 </div>
                 <h3>{this.state.time}</h3>
+                <TikTak time={this.state.time}/>
             </div>
         )
     }
