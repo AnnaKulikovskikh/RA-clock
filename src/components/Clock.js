@@ -3,8 +3,10 @@ import { Component } from "react";
 
 class Clock extends Component {
 
+    msInMin = 60000
+    msInHour = 3600000
     state = {
-        time: (new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + (3600000*this.props.zone))).toLocaleTimeString()
+        time: (new Date(new Date().getTime() + (new Date().getTimezoneOffset() * this.msInMin) + (this.msInHour*this.props.zone))).toLocaleTimeString()
     }
 
     del = () =>  {
@@ -14,7 +16,7 @@ class Clock extends Component {
     componentDidMount() {
 
         this.timerId = setInterval(() => {
-            this.setState(preState => ({ time: (new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + (3600000*this.props.zone))).toLocaleTimeString() }))
+            this.setState(preState => ({ time: (new Date(new Date().getTime() + (new Date().getTimezoneOffset() * this.msInMin) + (this.msInHour*this.props.zone))).toLocaleTimeString() }))
         }, 1000)
     }
 
