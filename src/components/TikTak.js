@@ -8,13 +8,13 @@ export default function TikTak(props) {
     return (
         <div className="analog-clock">
             <div className="hour">
-                <div class="hr" id="hr" style={{transform: `rotateZ(${(h) + (m/12)}deg)` }}></div>
+                <div className="hr" id="hr" style={{transform: `rotateZ(${(h) + (m/12)}deg)` }}></div>
             </div>
             <div className="min">
-                <div class="mn" id="mn"  style={{transform: `rotateZ(${m}deg)` }}></div>
+                <div className="mn" id="mn"  style={{transform: `rotateZ(${m}deg)` }}></div>
             </div>
             <div className="sec">
-                <div class="sc" id="sc" style={{transform: `rotateZ(${s}deg)` }}></div>
+                <div className="sc" id="sc" style={{transform: `rotateZ(${s}deg)` }}></div>
             </div>
         </div>
     )
